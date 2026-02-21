@@ -159,7 +159,7 @@ function ChatRegistrationContent() {
         const step = STEPS[0];
         const question = typeof step.question === "function" ? step.question(formData) : step.question;
         addBotMessage(question, () => setWaitingForInput(true));
-    }, [addBotMessage]);
+    }, [addBotMessage, formData]);
 
     const handleOptionSelect = (value: string) => {
         if (!waitingForInput || isTyping || isSubmitting) return;
@@ -299,13 +299,14 @@ function ChatRegistrationContent() {
                 setTimeout(() => {
                     router.push("/dashboard");
                 }, 5000);
-            } catch (err: any) {
+            } catch (err: unknown) {
                 console.error("Full Registration Error:", err);
                 setIsSubmitting(false);
 
                 // Construct a readable message from Supabase or standard error
-                const errorMessage = err?.message || err?.details || (typeof err === 'string' ? err : "An unknown error occurred");
-                const errorCode = err?.code ? ` [Code: ${err.code}]` : "";
+                const errorObj = err as { message?: string, details?: string, code?: string };
+                const errorMessage = errorObj?.message || errorObj?.details || (typeof err === 'string' ? err : "An unknown error occurred");
+                const errorCode = errorObj?.code ? ` [Code: ${errorObj.code}]` : "";
 
                 addBotMessage(
                     `❌ **Registration Failed**\n\n` +

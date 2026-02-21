@@ -52,3 +52,24 @@ export type Notification = {
   sent_by: string;
   created_at?: string;
 };
+
+export type Message = {
+  id: string;
+  project_id: string;
+  user_id: string;
+  sender_type: 'user' | 'admin';
+  content: string;
+  file_url?: string;
+  file_name?: string;
+  file_type?: string;
+  is_read: boolean;
+  created_at: string;
+};
+
+export type ProjectMember = {
+  id: string;
+  project_id: string;
+  user_id: string;
+  email: string;
+  joined_at: string;
+};

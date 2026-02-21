@@ -3,7 +3,8 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/lib/supabase";
-import type { Project, ProjectUpdate } from "@/lib/supabase";
+import type { Project, ProjectUpdate, Message } from "@/lib/supabase";
+import Image from "next/image";
 
 type RegistrationWithUser = Project & {
     users: {
@@ -84,7 +85,7 @@ export default function AdminDashboard() {
 
     // Chat States
     const [activeChatId, setActiveChatId] = useState<string | null>(null);
-    const [chatMessages, setChatMessages] = useState<any[]>([]);
+    const [chatMessages, setChatMessages] = useState<Message[]>([]);
     const [adminMsg, setAdminMsg] = useState("");
     const [uploadingFile, setUploadingFile] = useState(false);
     const chatEndRef = useRef<HTMLDivElement>(null);
@@ -150,7 +151,6 @@ export default function AdminDashboard() {
                 setTotalVisitors(total);
 
                 const today = new Date().toISOString().split('T')[0];
-                const todayStat = vStats.find(() => true); // In a real case we'd query by date, but let's just get the latest or re-query
                 const { data: todayData } = await supabase.from("visitor_stats").select("visitor_count").eq("visit_date", today).single();
                 if (todayData) setDailyVisitors(todayData.visitor_count);
             }
@@ -213,7 +213,7 @@ export default function AdminDashboard() {
                     if (activeChatId === payload.new.project_id) {
                         setChatMessages(prev => {
                             if (prev.some(m => m.id === payload.new.id)) return prev;
-                            return [...prev, payload.new];
+                            return [...prev, payload.new as Message];
                         });
                         // Mark as read immediately if chat is active
                         if (payload.new.sender_type === 'user') {
@@ -235,7 +235,7 @@ export default function AdminDashboard() {
         presenceChannel
             .on('presence', { event: 'sync' }, () => {
                 const state = presenceChannel.presenceState();
-                const users = Object.values(state).flat().map((u: any) => u.user_id);
+                const users = Object.values(state).flat().map((u: unknown) => (u as { user_id: string }).user_id);
                 setOnlineUsers(users);
             })
             .on('broadcast', { event: 'typing' }, ({ payload }) => {
@@ -404,8 +404,8 @@ export default function AdminDashboard() {
         const checkUnread = async () => {
             const { data } = await supabase.from('messages').select('project_id').eq('is_read', false).eq('sender_type', 'user');
             if (data) {
-                const counts: any = {};
-                data.forEach((m: any) => counts[m.project_id] = (counts[m.project_id] || 0) + 1);
+                const counts: Record<string, number> = {};
+                data.forEach((m) => counts[m.project_id] = (counts[m.project_id] || 0) + 1);
                 setUnreadCounts(counts);
             }
         };
@@ -425,7 +425,7 @@ export default function AdminDashboard() {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [chatMessages]);
 
-    const sendAdminMessage = async (e?: React.FormEvent, fileData?: any) => {
+    const sendAdminMessage = async (e?: React.FormEvent, fileData?: Partial<Message>) => {
         if (e) e.preventDefault();
         if (!admin || !activeChatId || (!adminMsg.trim() && !fileData)) return;
 
@@ -1152,7 +1152,7 @@ export default function AdminDashboard() {
                                     <div className="glass-card" style={{ padding: "20px", display: "flex", alignItems: "center", gap: "20px", border: "1px solid rgba(0, 255, 136, 0.2)" }}>
                                         <div style={{ width: "50px", height: "50px", borderRadius: "12px", background: "rgba(0, 255, 136, 0.1)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "24px" }}>👁️</div>
                                         <div>
-                                            <div style={{ fontSize: "11px", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "1px" }}>Today's Visitors</div>
+                                            <div style={{ fontSize: "11px", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "1px" }}>Today&apos;s Visitors</div>
                                             <div style={{ fontSize: "1.8rem", fontWeight: 800, fontFamily: "'Space Grotesk', sans-serif", color: "#00FF88" }}>{dailyVisitors}</div>
                                         </div>
                                     </div>
@@ -1808,16 +1808,20 @@ export default function AdminDashboard() {
                                                                 <div style={{ marginTop: "10px" }}>
                                                                     {msg.file_type?.startsWith('image/') ? (
                                                                         <div style={{ position: "relative" }}>
-                                                                            <img
-                                                                                src={msg.file_url}
-                                                                                alt={msg.file_name}
+                                                                            <Image
+                                                                                src={msg.file_url!}
+                                                                                alt={msg.file_name || "Attachment"}
+                                                                                width={400}
+                                                                                height={300}
                                                                                 style={{
                                                                                     maxWidth: "100%",
+                                                                                    height: "auto",
                                                                                     maxHeight: "300px",
                                                                                     borderRadius: "8px",
                                                                                     display: "block",
                                                                                     border: "1px solid rgba(255,255,255,0.1)"
                                                                                 }}
+                                                                                unoptimized
                                                                             />
                                                                             <a
                                                                                 href={msg.file_url}
@@ -1904,7 +1908,11 @@ export default function AdminDashboard() {
                                                         ref={chatInputRef}
                                                         type="text"
                                                         value={adminMsg}
-                                                        onChange={e => setAdminMsg(e.target.value)}
+                                                        onChange={e => {
+                                                            setAdminMsg(e.target.value);
+                                                            handleTyping(e.target.value.length > 0);
+                                                        }}
+                                                        onBlur={() => handleTyping(false)}
                                                         placeholder="Write a reply..."
                                                         style={{ flex: 1, padding: "12px 18px", borderRadius: "10px", background: "var(--surface)", border: "1px solid var(--border)", color: "white", outline: "none", fontSize: "14px" }}
                                                     />

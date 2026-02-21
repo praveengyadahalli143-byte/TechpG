@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
 import { SplineScene } from "@/components/ui/splite"
 import { supabase } from "@/lib/supabase"
 
@@ -229,7 +230,7 @@ export default function HeroSection() {
                             boxShadow: "0 0 20px rgba(139, 131, 255, 0.15)"
                         }}
                     >
-                        <img src="/favicon.ico" alt="TechpG" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                        <Image src="/favicon.ico" alt="TechpG" width={36} height={36} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
                     </motion.div>
                     <div style={{ display: "flex", flexDirection: "column" }}>
                         <span style={{
@@ -375,7 +376,7 @@ export default function HeroSection() {
                                 position: "relative"
                             }}
                         >
-                            <img src={p.img} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.6 }} />
+                            <Image src={p.img} alt={p.title} width={120} height={80} style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.6 }} unoptimized />
                             <div style={{ position: "absolute", bottom: "4px", left: "0", width: "100%", fontSize: "9px", color: "white", fontWeight: 600 }}>{p.title}</div>
                         </motion.div>
                     ))}
