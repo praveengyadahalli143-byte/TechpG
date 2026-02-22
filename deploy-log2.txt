@@ -1,3 +1,0 @@
-Vercel CLI 50.22.1
-Retrieving project…
-Error: An unexpected error occurred in deploy: FetchError: request to https://api.vercel.com/v9/projects/prj_1pnsQlYOsnTMEkTsihJAUGackYJ6?teamId=team_AIzrjs8JrHNasEwQYjIN5abD failed, reason: read ECONNRESET

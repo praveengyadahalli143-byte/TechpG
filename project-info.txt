@@ -1,3 +1,0 @@
-Vercel CLI 50.22.1
-Fetching projects in praveengyadahalli143-gmailcoms-projects
-> No projects found under praveengyadahalli143-gmailcoms-projects  [8s]
