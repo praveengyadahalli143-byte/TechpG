@@ -1,0 +1,31 @@
+Vercel CLI 50.22.1
+Retrieving project…
+Fetching deployments in praveengyadahalli143-gmailcoms-projects
+> Deployments for praveengyadahalli143-gmailcoms-projects/techpg [1s]
+
+  Age     Project                                            Deployment                                                                      Status      Environment     Duration     Username                      
+  2m      praveengyadahalli143-gmailcoms-projects/techpg     https://techpg-344plg2bz-praveengyadahalli143-gmailcoms-projects.vercel.app     ● Error     Production      25s          praveengyadahalli143-8793     
+  40m     praveengyadahalli143-gmailcoms-projects/techpg     https://techpg-u54dr517f-praveengyadahalli143-gmailcoms-projects.vercel.app     ● Error     Production      33s          praveengyadahalli143-8793     
+  47m     praveengyadahalli143-gmailcoms-projects/techpg     https://techpg-dpbd79p95-praveengyadahalli143-gmailcoms-projects.vercel.app     ● Error     Production      30s          praveengyadahalli143-8793     
+  48m     praveengyadahalli143-gmailcoms-projects/techpg     https://techpg-bsg8jwp30-praveengyadahalli143-gmailcoms-projects.vercel.app     ● Error     Production      44s          praveengyadahalli143-8793     
+  54m     praveengyadahalli143-gmailcoms-projects/techpg     https://techpg-oyzu8235k-praveengyadahalli143-gmailcoms-projects.vercel.app     ● Ready     Production      47s          praveengyadahalli143-8793     
+  1h      praveengyadahalli143-gmailcoms-projects/techpg     https://techpg-pqy4wohuh-praveengyadahalli143-gmailcoms-projects.vercel.app     ● Error     Production      42s          praveengyadahalli143-8793     
+  2h      praveengyadahalli143-gmailcoms-projects/techpg     https://techpg-jhmslw8ql-praveengyadahalli143-gmailcoms-projects.vercel.app     ● Error     Production      39s          praveengyadahalli143-8793     
+  2h      praveengyadahalli143-gmailcoms-projects/techpg     https://techpg-8gnq0i781-praveengyadahalli143-gmailcoms-projects.vercel.app     ● Error     Production      44s          praveengyadahalli143-8793     
+  2h      praveengyadahalli143-gmailcoms-projects/techpg     https://techpg-745oha1e5-praveengyadahalli143-gmailcoms-projects.vercel.app     ● Error     Production      43s          praveengyadahalli143-8793     
+  3h      praveengyadahalli143-gmailcoms-projects/techpg     https://techpg-cf3d7shqg-praveengyadahalli143-gmailcoms-projects.vercel.app     ● Error     Production      43s          praveengyadahalli143-8793     
+  3h      praveengyadahalli143-gmailcoms-projects/techpg     https://techpg-och8u8rl7-praveengyadahalli143-gmailcoms-projects.vercel.app     ● Error     Production      39s          praveengyadahalli143-8793     
+  3h      praveengyadahalli143-gmailcoms-projects/techpg     https://techpg-gw625winc-praveengyadahalli143-gmailcoms-projects.vercel.app     ● Error     Production      39s          praveengyadahalli143-8793     
+
+https://techpg-344plg2bz-praveengyadahalli143-gmailcoms-projects.vercel.app
+https://techpg-u54dr517f-praveengyadahalli143-gmailcoms-projects.vercel.app
+https://techpg-dpbd79p95-praveengyadahalli143-gmailcoms-projects.vercel.app
+https://techpg-bsg8jwp30-praveengyadahalli143-gmailcoms-projects.vercel.app
+https://techpg-oyzu8235k-praveengyadahalli143-gmailcoms-projects.vercel.app
+https://techpg-pqy4wohuh-praveengyadahalli143-gmailcoms-projects.vercel.app
+https://techpg-jhmslw8ql-praveengyadahalli143-gmailcoms-projects.vercel.app
+https://techpg-8gnq0i781-praveengyadahalli143-gmailcoms-projects.vercel.app
+https://techpg-745oha1e5-praveengyadahalli143-gmailcoms-projects.vercel.app
+https://techpg-cf3d7shqg-praveengyadahalli143-gmailcoms-projects.vercel.app
+https://techpg-och8u8rl7-praveengyadahalli143-gmailcoms-projects.vercel.app
+https://techpg-gw625winc-praveengyadahalli143-gmailcoms-projects.vercel.app

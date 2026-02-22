@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import { useRef } from "react";
 
 const stats = [
     { number: "500+", label: "Projects Completed", icon: "📊" },
@@ -34,14 +33,11 @@ const projects = [
 ];
 
 export default function ProofOfWork() {
-    const sectionRef = useRef<HTMLElement>(null);
-
     return (
         <section
-            ref={sectionRef}
             id="proof-of-work"
             style={{
-                padding: "100px 24px",
+                padding: "clamp(60px, 8vw, 100px) clamp(16px, 4vw, 24px)",
                 position: "relative",
                 zIndex: 1,
             }}
@@ -61,15 +57,8 @@ export default function ProofOfWork() {
                     </p>
                 </motion.div>
 
-                {/* Stats Grid */}
-                <div
-                    style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-                        gap: "20px",
-                        marginBottom: "60px",
-                    }}
-                >
+                {/* Stats Grid — responsive: 2-col on mobile, 4-col on desktop */}
+                <div className="responsive-grid-stats" style={{ marginBottom: "clamp(32px, 6vw, 60px)" }}>
                     {stats.map((stat, i) => (
                         <motion.div
                             key={i}
@@ -79,14 +68,14 @@ export default function ProofOfWork() {
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1, duration: 0.5 }}
                             style={{
-                                padding: "30px 24px",
+                                padding: "clamp(20px, 3vw, 30px) clamp(16px, 2vw, 24px)",
                                 textAlign: "center",
                             }}
                         >
-                            <span style={{ fontSize: "32px", display: "block", marginBottom: "12px" }}>{stat.icon}</span>
+                            <span style={{ fontSize: "clamp(24px, 4vw, 32px)", display: "block", marginBottom: "10px" }}>{stat.icon}</span>
                             <div
                                 style={{
-                                    fontSize: "2.2rem",
+                                    fontSize: "clamp(1.5rem, 4vw, 2.2rem)",
                                     fontWeight: 800,
                                     fontFamily: "'Space Grotesk', sans-serif",
                                     background: "var(--gradient-1)",
@@ -97,7 +86,7 @@ export default function ProofOfWork() {
                             >
                                 {stat.number}
                             </div>
-                            <div style={{ fontSize: "14px", color: "var(--text-secondary)" }}>{stat.label}</div>
+                            <div style={{ fontSize: "clamp(12px, 2vw, 14px)", color: "var(--text-secondary)" }}>{stat.label}</div>
                         </motion.div>
                     ))}
                 </div>
@@ -109,23 +98,18 @@ export default function ProofOfWork() {
                     viewport={{ once: true }}
                     style={{
                         textAlign: "center",
-                        fontSize: "1.5rem",
+                        fontSize: "clamp(1.1rem, 3vw, 1.5rem)",
                         fontWeight: 600,
                         color: "var(--text-secondary)",
-                        marginBottom: "30px",
+                        marginBottom: "clamp(18px, 3vw, 30px)",
                         fontFamily: "'Space Grotesk', sans-serif",
                     }}
                 >
                     Featured Projects
                 </motion.h3>
 
-                <div
-                    style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                        gap: "24px",
-                    }}
-                >
+                {/* Projects Grid — 1-col mobile, 2-col tablet, 3-col desktop */}
+                <div className="responsive-grid-cards">
                     {projects.map((project, i) => (
                         <motion.div
                             key={i}
@@ -135,7 +119,7 @@ export default function ProofOfWork() {
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.15, duration: 0.5 }}
                             style={{
-                                padding: "28px",
+                                padding: "clamp(20px, 3vw, 28px)",
                                 overflow: "hidden",
                                 position: "relative",
                             }}
@@ -144,8 +128,7 @@ export default function ProofOfWork() {
                             <div
                                 style={{
                                     position: "absolute",
-                                    top: 0,
-                                    left: 0,
+                                    top: 0, left: 0,
                                     width: "100%",
                                     height: "3px",
                                     background: project.gradient,
@@ -154,16 +137,20 @@ export default function ProofOfWork() {
                             <div
                                 style={{
                                     display: "flex",
-                                    alignItems: "center",
+                                    alignItems: "flex-start",
                                     justifyContent: "space-between",
+                                    gap: "8px",
                                     marginBottom: "12px",
+                                    flexWrap: "wrap",
                                 }}
                             >
                                 <h4
                                     style={{
-                                        fontSize: "1.15rem",
+                                        fontSize: "clamp(1rem, 2.5vw, 1.15rem)",
                                         fontWeight: 600,
                                         fontFamily: "'Space Grotesk', sans-serif",
+                                        flex: 1,
+                                        minWidth: "140px",
                                     }}
                                 >
                                     {project.title}
@@ -176,6 +163,7 @@ export default function ProofOfWork() {
                                         background: "rgba(108, 99, 255, 0.15)",
                                         color: "var(--primary-light)",
                                         fontWeight: 600,
+                                        whiteSpace: "nowrap",
                                     }}
                                 >
                                     {project.type}
@@ -183,7 +171,7 @@ export default function ProofOfWork() {
                             </div>
                             <p
                                 style={{
-                                    fontSize: "14px",
+                                    fontSize: "clamp(13px, 1.8vw, 14px)",
                                     color: "var(--text-secondary)",
                                     lineHeight: 1.6,
                                     marginBottom: "16px",

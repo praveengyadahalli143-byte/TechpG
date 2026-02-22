@@ -1,0 +1,9 @@
+Vercel CLI 50.22.1
+Retrieving project…
+Fetching deployments in praveengyadahalli143-gmailcoms-projects
+> Deployments for praveengyadahalli143-gmailcoms-projects/techpg [379ms]
+
+  Age     Project                                            Deployment                                                                      Status      Environment     Duration     Username                      
+  2m      praveengyadahalli143-gmailcoms-projects/techpg     https://techpg-b80tgitwn-praveengyadahalli143-gmailcoms-projects.vercel.app     ● Error     Production      1m           praveengyadahalli143-8793     
+
+https://techpg-b80tgitwn-praveengyadahalli143-gmailcoms-projects.vercel.app

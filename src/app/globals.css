@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* ========== shadcn/ui CSS Variables ========== */
+/* ========== Design Tokens ========== */
 @theme {
   --color-card: #12122A;
   --color-card-foreground: #FFFFFF;
@@ -45,6 +45,7 @@
   --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
+/* ========== Base Reset ========== */
 * {
   margin: 0;
   padding: 0;
@@ -53,6 +54,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -61,20 +63,33 @@ body {
   color: var(--text-primary);
   overflow-x: hidden;
   min-height: 100vh;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Ensure minimum touch targets */
+a, button, [role="button"] {
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+a {
+  min-height: unset;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -90,7 +105,7 @@ h6 {
   background: var(--primary-light);
 }
 
-/* Animated Background */
+/* ========== Animated Background ========== */
 .animated-bg {
   position: fixed;
   top: 0;
@@ -117,26 +132,13 @@ h6 {
 }
 
 @keyframes bgFloat {
-
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-
-  25% {
-    transform: translate(2%, -2%) rotate(1deg);
-  }
-
-  50% {
-    transform: translate(-1%, 3%) rotate(-1deg);
-  }
-
-  75% {
-    transform: translate(3%, 1%) rotate(0.5deg);
-  }
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(2%, -2%) rotate(1deg); }
+  50% { transform: translate(-1%, 3%) rotate(-1deg); }
+  75% { transform: translate(3%, 1%) rotate(0.5deg); }
 }
 
-/* Spline loader */
+/* ========== Loader ========== */
 .loader {
   width: 48px;
   height: 48px;
@@ -147,12 +149,10 @@ h6 {
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
-/* Glass Card */
+/* ========== Glass Card ========== */
 .glass-card {
   background: rgba(18, 18, 42, 0.7);
   backdrop-filter: blur(20px);
@@ -168,7 +168,7 @@ h6 {
   transform: translateY(-2px);
 }
 
-/* Glow Button */
+/* ========== Glow Buttons ========== */
 .glow-btn {
   position: relative;
   padding: 14px 32px;
@@ -181,6 +181,10 @@ h6 {
   transition: all 0.3s ease;
   overflow: hidden;
   z-index: 1;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .glow-btn-primary {
@@ -206,9 +210,9 @@ h6 {
   transform: translateY(-2px);
 }
 
-/* Section title */
+/* ========== Section Typography ========== */
 .section-title {
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 700;
   text-align: center;
   margin-bottom: 1rem;
@@ -219,15 +223,16 @@ h6 {
 }
 
 .section-subtitle {
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
   color: var(--text-secondary);
   text-align: center;
   max-width: 600px;
   margin: 0 auto 3rem;
   line-height: 1.7;
+  padding: 0 16px;
 }
 
-/* Typing indicator */
+/* ========== Typing Indicator ========== */
 .typing-indicator {
   display: flex;
   gap: 4px;
@@ -243,30 +248,15 @@ h6 {
   animation: typing 1.4s infinite;
 }
 
-.typing-indicator span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.typing-indicator span:nth-child(3) {
-  animation-delay: 0.4s;
-}
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
 
 @keyframes typing {
-
-  0%,
-  60%,
-  100% {
-    transform: translateY(0);
-    opacity: 0.4;
-  }
-
-  30% {
-    transform: translateY(-8px);
-    opacity: 1;
-  }
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-8px); opacity: 1; }
 }
 
-/* Status badges */
+/* ========== Status Badges ========== */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -309,7 +299,7 @@ h6 {
   border: 1px solid rgba(108, 99, 255, 0.3);
 }
 
-/* Chat bubbles */
+/* ========== Chat Bubbles ========== */
 .chat-bubble {
   max-width: 80%;
   padding: 14px 20px;
@@ -334,68 +324,20 @@ h6 {
 }
 
 @keyframes bubbleIn {
-  0% {
-    opacity: 0;
-    transform: translateY(10px) scale(0.95);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  0% { opacity: 0; transform: translateY(10px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-@media (max-width: 1024px) {
-  .hero-section {
-    padding: 20px;
-  }
+/* ========== Hero Section ========== */
+.hero-section {
+  --btn-scale: 1;
 }
 
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 1.8rem;
-  }
-
-  .section-subtitle {
-    font-size: 0.95rem;
-  }
-
-  .glass-card {
-    padding: 24px !important;
-  }
-
-  /* Hero Section Mobile */
-  .hero-section {
-    --btn-scale: 0.85;
-  }
-
-  .corner-btn-container {
-    transform: scale(0.8) !important;
-  }
-
-  /* Registration Mobile */
-  .chat-bubble {
-    max-width: 90%;
-    padding: 12px 16px;
-    font-size: 13.5px;
-  }
+.corner-btn-container {
+  /* Default: no scaling */
 }
 
-@media (max-width: 480px) {
-  .hero-section {
-    --btn-scale: 0.75;
-  }
-
-  .corner-btn-container {
-    transform: scale(0.7) !important;
-  }
-
-  .dashed-ring {
-    transform: translate(-50%, -50%) scale(0.8) !important;
-  }
-}
-
-/* Dashboard Responsiveness */
+/* ========== Dashboard Layout ========== */
 .dashboard-layout {
   display: grid;
   grid-template-columns: 320px 1fr;
@@ -403,12 +345,89 @@ h6 {
   overflow: hidden;
 }
 
+/* ========== Responsive Grid Utilities ========== */
+.responsive-grid-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.responsive-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.responsive-grid-mini {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+/* ========== BREAKPOINTS ========== */
+
+/* ── Large Desktop: 1201px+ ── */
+@media (min-width: 1201px) {
+  .dashboard-layout {
+    grid-template-columns: 320px 1fr;
+  }
+
+  .responsive-grid-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .responsive-grid-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .responsive-grid-mini {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hero-section {
+    --btn-scale: 1;
+  }
+}
+
+/* ── Desktop: 1025px - 1200px ── */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .responsive-grid-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .responsive-grid-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .responsive-grid-mini {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── Tablets: 769px - 1024px ── */
 @media (max-width: 1024px) {
   .dashboard-layout {
     grid-template-columns: 280px 1fr;
   }
+
+  .hero-section {
+    --btn-scale: 0.9;
+  }
+
+  .responsive-grid-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .responsive-grid-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .responsive-grid-mini {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
+/* ── Large Phones: 481px - 768px ── */
 @media (max-width: 768px) {
   .dashboard-layout {
     grid-template-columns: 1fr;
@@ -440,4 +459,277 @@ h6 {
   .mobile-sidebar.open {
     transform: translateX(0);
   }
+
+  .hero-section {
+    --btn-scale: 0.82;
+  }
+
+  .corner-btn-container {
+    transform: scale(0.82) !important;
+  }
+
+  .chat-bubble {
+    max-width: 88%;
+    padding: 12px 16px;
+    font-size: 13.5px;
+  }
+
+  .glow-btn {
+    font-size: 14px;
+    padding: 12px 24px;
+  }
+
+  .responsive-grid-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .responsive-grid-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .responsive-grid-mini {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  .glass-card {
+    border-radius: 16px;
+  }
+}
+
+/* ── Small Phones: 320px - 480px ── */
+@media (max-width: 480px) {
+  body {
+    font-size: 15px;
+  }
+
+  .hero-section {
+    --btn-scale: 0.72;
+  }
+
+  .corner-btn-container {
+    transform: scale(0.72) !important;
+  }
+
+  .dashed-ring {
+    transform: translate(-50%, -50%) scale(0.8) !important;
+  }
+
+  .chat-bubble {
+    max-width: 92%;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .glow-btn {
+    font-size: 13px;
+    padding: 12px 18px;
+  }
+
+  .responsive-grid-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .responsive-grid-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .responsive-grid-mini {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .glass-card {
+    border-radius: 14px;
+    padding: 20px !important;
+  }
+}
+
+/* ========== Navbar Responsive ========== */
+.desktop-nav {
+  display: flex;
+}
+
+.mobile-menu-btn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .mobile-menu-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ========== Hero — Responsive Button Positions ========== */
+/* On tiny screens, reposition corner buttons to avoid overlap */
+@media (max-width: 480px) {
+  .hero-btn-top-left {
+    top: 16px !important;
+    left: 16px !important;
+  }
+  .hero-btn-top-right {
+    top: 16px !important;
+    right: 16px !important;
+  }
+  .hero-btn-bottom-left {
+    bottom: 100px !important;
+    left: 16px !important;
+  }
+  .hero-btn-bottom-right {
+    bottom: 100px !important;
+    right: 16px !important;
+  }
+  .hero-btn-center-left {
+    top: 45% !important;
+    left: 16px !important;
+  }
+  .hero-btn-center-right {
+    top: 45% !important;
+    right: 16px !important;
+  }
+  .hero-center-preview {
+    bottom: 10px !important;
+    display: none !important;
+  }
+  .hero-dashboard-btn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-center-preview {
+    bottom: 80px !important;
+  }
+  .hero-dashboard-btn {
+    top: 16px !important;
+  }
+}
+
+/* ========== Register Page Responsive ========== */
+.register-header {
+  padding: 14px 16px;
+}
+
+.register-chat-area {
+  padding: 90px 16px 160px;
+}
+
+.register-input-bar {
+  padding: 12px 16px;
+}
+
+@media (min-width: 480px) {
+  .register-header { padding: 16px 20px; }
+  .register-chat-area { padding: 90px 20px 160px; }
+  .register-input-bar { padding: 14px 20px; }
+}
+
+@media (min-width: 769px) {
+  .register-header { padding: 16px 24px; }
+  .register-chat-area { padding: 90px 24px 160px; }
+  .register-input-bar { padding: 16px 24px; }
+}
+
+/* ========== Admin Panel Responsive ========== */
+.admin-panel-container {
+  width: 100%;
+  padding: 0 16px;
+}
+
+@media (min-width: 769px) {
+  .admin-panel-container {
+    width: 75%;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
+@media (min-width: 1025px) {
+  .admin-panel-container {
+    width: 50%;
+  }
+}
+
+/* ========== Proof of Work Responsive ========== */
+.pow-major-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pow-card-info {
+  padding: 20px;
+}
+
+@media (min-width: 769px) {
+  .pow-card-info {
+    padding: 24px 28px;
+  }
+}
+
+/* ========== Team Page Responsive ========== */
+.team-lead-card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .team-lead-card-inner {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+/* ========== Visitor Analytics / Stats Responsive ========== */
+.visitor-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 769px) {
+  .visitor-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .visitor-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ========== Print Styles ========== */
+@media print {
+  .animated-bg, .corner-btn-container { display: none; }
+  body { background: white; color: black; }
 }

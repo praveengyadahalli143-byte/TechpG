@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 /* ─── Project Data ─── */
-
 const majorProjects = [
     {
         title: "EngiPath",
@@ -28,7 +27,7 @@ const majorProjects = [
         title: "HackMitten",
         description: "Full-stack hackathon project showcasing web development, coding excellence, and competitive programming skills.",
         type: "link",
-        link: "https://www.linkedin.com/posts/praveen-goudappa-yadahalli-a88528317_webdev-coding-fullstack-activity-7362383259059568640-ZzPx?utm_source=social_share_send&utm_medium=member_desktop_web",
+        link: "https://www.linkedin.com/posts/praveen-goudappa-yadahalli-a88528317_webdev-coding-fullstack-activity-7362383259059568640-ZzPx",
         tech: ["Web Dev", "Full-Stack", "Hackathon"],
         gradient: "linear-gradient(135deg, #F97316 0%, #EF4444 100%)",
         icon: "🏆",
@@ -37,7 +36,7 @@ const majorProjects = [
         title: "Video Analyzer",
         description: "AI-powered video analysis tool built during a hackathon. Performs intelligent content analysis with machine learning models.",
         type: "link",
-        link: "https://www.linkedin.com/posts/praveen-goudappa-yadahalli-a88528317_adhityamurari-hackathon-ai-activity-7374112073934565377-8uhl?utm_source=social_share_send&utm_medium=member_desktop_web",
+        link: "https://www.linkedin.com/posts/praveen-goudappa-yadahalli-a88528317_adhityamurari-hackathon-ai-activity-7374112073934565377-8uhl",
         tech: ["AI", "Python", "Hackathon"],
         gradient: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)",
         icon: "🎬",
@@ -84,7 +83,7 @@ export default function ProofOfWorkPage() {
             style={{
                 minHeight: "100vh",
                 background: "#0A0A1A",
-                padding: "60px 24px 80px",
+                padding: "clamp(48px, 8vw, 60px) clamp(16px, 4vw, 24px) clamp(48px, 8vw, 80px)",
                 position: "relative",
                 overflow: "hidden",
             }}
@@ -99,31 +98,48 @@ export default function ProofOfWorkPage() {
             />
 
             {/* Back */}
-            <Link href="/" style={{ position: "fixed", top: "24px", left: "24px", zIndex: 50, textDecoration: "none" }}>
-                <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                    style={{ padding: "10px 20px", borderRadius: "10px", border: "1px solid rgba(108,99,255,0.3)", background: "rgba(108,99,255,0.08)", backdropFilter: "blur(12px)", color: "#8B83FF", fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500, fontSize: "13px", cursor: "pointer" }}>
+            <Link href="/" style={{ position: "fixed", top: "clamp(12px, 2vw, 24px)", left: "clamp(12px, 2vw, 24px)", zIndex: 50, textDecoration: "none" }}>
+                <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    style={{ padding: "10px 20px", borderRadius: "10px", border: "1px solid rgba(108,99,255,0.3)", background: "rgba(108,99,255,0.08)", backdropFilter: "blur(12px)", color: "#8B83FF", fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500, fontSize: "13px", cursor: "pointer", minHeight: "44px" }}
+                >
                     ← Back
                 </motion.button>
             </Link>
 
-            <div style={{ maxWidth: "1040px", margin: "0 auto", paddingTop: "40px", position: "relative", zIndex: 1 }}>
+            <div style={{ maxWidth: "1040px", margin: "0 auto", paddingTop: "clamp(28px, 5vw, 40px)", position: "relative", zIndex: 1 }}>
                 {/* Header */}
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} style={{ textAlign: "center", marginBottom: "48px" }}>
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} style={{ textAlign: "center", marginBottom: "clamp(30px, 6vw, 48px)" }}>
                     <h1 className="section-title" style={{ marginBottom: "12px" }}>🚀 Proof of Work</h1>
-                    <p style={{ fontSize: "1rem", color: "var(--text-secondary)", maxWidth: "560px", margin: "0 auto", lineHeight: 1.7 }}>
-                        Real projects, real impact — built by <strong style={{ color: "var(--primary-light)" }}>Praveen G Y</strong> and the TechpG team.
+                    <p style={{ fontSize: "clamp(0.9rem, 2.5vw, 1rem)", color: "var(--text-secondary)", maxWidth: "560px", margin: "0 auto", lineHeight: 1.7, padding: "0 8px" }}>
+                        Real projects, real impact — built by{" "}
+                        <strong style={{ color: "var(--primary-light)" }}>Praveen G Y</strong> and the TechpG team.
                     </p>
                 </motion.div>
 
                 {/* ═══════ MAJOR PROJECTS ═══════ */}
-                <div style={{ marginBottom: "52px" }}>
-                    <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }}
-                        style={{ fontSize: "1.1rem", fontWeight: 600, fontFamily: "'Space Grotesk', sans-serif", color: "var(--text-secondary)", marginBottom: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
-                        <span style={{ width: "28px", height: "2px", background: "var(--gradient-1)", display: "inline-block", borderRadius: "2px" }} />
+                <div style={{ marginBottom: "clamp(32px, 6vw, 52px)" }}>
+                    <motion.h2
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.15 }}
+                        style={{
+                            fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)",
+                            fontWeight: 600,
+                            fontFamily: "'Space Grotesk', sans-serif",
+                            color: "var(--text-secondary)",
+                            marginBottom: "18px",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "10px",
+                        }}
+                    >
+                        <span style={{ width: "28px", height: "2px", background: "var(--gradient-1)", display: "inline-block", borderRadius: "2px", flexShrink: 0 }} />
                         Major Projects
                     </motion.h2>
 
-                    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                    <div className="pow-major-grid">
                         {majorProjects.map((project, i) => (
                             <motion.div
                                 key={project.title}
@@ -138,7 +154,7 @@ export default function ProofOfWorkPage() {
 
                                 {/* Video embed OR gradient thumbnail */}
                                 {project.type === "video" ? (
-                                    <div style={{ width: "100%", aspectRatio: "16/9", maxHeight: "420px", background: "#000" }}>
+                                    <div style={{ width: "100%", aspectRatio: "16/9", maxHeight: "360px", background: "#000" }}>
                                         <iframe
                                             src={`${project.embedUrl}?autoplay=1`}
                                             width="100%"
@@ -153,7 +169,7 @@ export default function ProofOfWorkPage() {
                                     <div
                                         style={{
                                             width: "100%",
-                                            height: "180px",
+                                            height: "clamp(120px, 20vw, 180px)",
                                             background: project.gradient,
                                             display: "flex",
                                             alignItems: "center",
@@ -162,25 +178,23 @@ export default function ProofOfWorkPage() {
                                             overflow: "hidden",
                                         }}
                                     >
-                                        {/* Decorative circles */}
                                         <div style={{ position: "absolute", top: "-30px", right: "-30px", width: "120px", height: "120px", borderRadius: "50%", background: "rgba(255,255,255,0.08)" }} />
                                         <div style={{ position: "absolute", bottom: "-40px", left: "-20px", width: "100px", height: "100px", borderRadius: "50%", background: "rgba(255,255,255,0.06)" }} />
-                                        <div style={{ position: "absolute", top: "30%", right: "20%", width: "60px", height: "60px", borderRadius: "50%", background: "rgba(255,255,255,0.04)" }} />
-                                        <span style={{ fontSize: "56px", position: "relative", zIndex: 1, filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.3))" }}>{project.icon}</span>
+                                        <span style={{ fontSize: "clamp(36px, 8vw, 56px)", position: "relative", zIndex: 1, filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.3))" }}>{project.icon}</span>
                                     </div>
                                 )}
 
                                 {/* Info area */}
-                                <div style={{ padding: "24px 28px" }}>
-                                    <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "16px", flexWrap: "wrap" }}>
-                                        <div style={{ flex: 1, minWidth: "200px" }}>
-                                            <h3 style={{ fontSize: "1.2rem", fontWeight: 700, fontFamily: "'Space Grotesk', sans-serif", color: "white", marginBottom: "6px" }}>
+                                <div className="pow-card-info">
+                                    <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "12px", flexWrap: "wrap" }}>
+                                        <div style={{ flex: 1, minWidth: "180px" }}>
+                                            <h3 style={{ fontSize: "clamp(1rem, 2.5vw, 1.2rem)", fontWeight: 700, fontFamily: "'Space Grotesk', sans-serif", color: "white", marginBottom: "6px" }}>
                                                 {project.title}
                                             </h3>
-                                            <p style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.6, marginBottom: "14px" }}>
+                                            <p style={{ fontSize: "clamp(12px, 1.8vw, 13px)", color: "var(--text-secondary)", lineHeight: 1.6, marginBottom: "12px" }}>
                                                 {project.description}
                                             </p>
-                                            <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "16px" }}>
+                                            <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "12px" }}>
                                                 {project.tech.map(t => (
                                                     <span key={t} style={{ fontSize: "11px", padding: "3px 10px", borderRadius: "6px", background: "rgba(0,217,255,0.08)", color: "#00D9FF", border: "1px solid rgba(0,217,255,0.15)" }}>{t}</span>
                                                 ))}
@@ -191,22 +205,24 @@ export default function ProofOfWorkPage() {
                                                 whileHover={{ scale: 1.04, y: -1 }}
                                                 whileTap={{ scale: 0.97 }}
                                                 style={{
-                                                    padding: "12px 24px",
+                                                    padding: "10px 20px",
                                                     borderRadius: "10px",
                                                     border: "none",
                                                     background: project.gradient,
                                                     color: "white",
                                                     fontFamily: "'Space Grotesk', sans-serif",
                                                     fontWeight: 600,
-                                                    fontSize: "13px",
+                                                    fontSize: "clamp(12px, 1.8vw, 13px)",
                                                     cursor: "pointer",
                                                     boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
                                                     display: "flex",
                                                     alignItems: "center",
                                                     gap: "8px",
+                                                    minHeight: "44px",
+                                                    whiteSpace: "nowrap",
                                                 }}
                                             >
-                                                {project.type === "video" ? "▶ Watch" : "🔗 View Project"} →
+                                                {project.type === "video" ? "▶ Watch" : "🔗 View"} →
                                             </motion.button>
                                         </a>
                                     </div>
@@ -218,20 +234,31 @@ export default function ProofOfWorkPage() {
 
                 {/* ═══════ MINI PROJECTS ═══════ */}
                 <div>
-                    <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
-                        style={{ fontSize: "1.1rem", fontWeight: 600, fontFamily: "'Space Grotesk', sans-serif", color: "var(--text-secondary)", marginBottom: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
-                        <span style={{ width: "28px", height: "2px", background: "var(--gradient-3)", display: "inline-block", borderRadius: "2px" }} />
+                    <motion.h2
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.6 }}
+                        style={{
+                            fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)",
+                            fontWeight: 600,
+                            fontFamily: "'Space Grotesk', sans-serif",
+                            color: "var(--text-secondary)",
+                            marginBottom: "18px",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "10px",
+                            flexWrap: "wrap",
+                        }}
+                    >
+                        <span style={{ width: "28px", height: "2px", background: "var(--gradient-3)", display: "inline-block", borderRadius: "2px", flexShrink: 0 }} />
                         Mini Projects
-                        <span style={{ fontSize: "12px", padding: "2px 10px", borderRadius: "10px", background: "rgba(0,255,136,0.1)", color: "#00FF88", border: "1px solid rgba(0,255,136,0.2)", fontWeight: 500, marginLeft: "4px" }}>
+                        <span style={{ fontSize: "11px", padding: "2px 10px", borderRadius: "10px", background: "rgba(0,255,136,0.1)", color: "#00FF88", border: "1px solid rgba(0,255,136,0.2)", fontWeight: 500 }}>
                             {miniProjects.length} notebooks
                         </span>
                     </motion.h2>
 
-                    <div style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-                        gap: "14px",
-                    }}>
+                    {/* Responsive mini grid: 2-col mobile, 3-col tablet, 4-col desktop */}
+                    <div className="responsive-grid-mini">
                         {miniProjects.map((project, i) => (
                             <motion.a
                                 key={project.title}
@@ -253,11 +280,12 @@ export default function ProofOfWorkPage() {
                                     cursor: "pointer",
                                     transition: "border-color 0.3s ease, box-shadow 0.3s ease",
                                     display: "block",
+                                    minHeight: "44px",
                                 }}
                             >
-                                {/* Gradient top bar */}
+                                {/* Gradient top */}
                                 <div style={{
-                                    height: "80px",
+                                    height: "clamp(60px, 10vw, 80px)",
                                     background: `linear-gradient(135deg, ${project.color}30, ${project.color}10)`,
                                     display: "flex",
                                     alignItems: "center",
@@ -266,10 +294,10 @@ export default function ProofOfWorkPage() {
                                     overflow: "hidden",
                                 }}>
                                     <div style={{ position: "absolute", top: "-20px", right: "-20px", width: "60px", height: "60px", borderRadius: "50%", background: `${project.color}15` }} />
-                                    <span style={{ fontSize: "28px", position: "relative", zIndex: 1 }}>{project.icon}</span>
+                                    <span style={{ fontSize: "clamp(22px, 4vw, 28px)", position: "relative", zIndex: 1 }}>{project.icon}</span>
                                 </div>
-                                <div style={{ padding: "14px 16px" }}>
-                                    <div style={{ fontSize: "13px", fontWeight: 600, fontFamily: "'Space Grotesk', sans-serif", marginBottom: "6px" }}>
+                                <div style={{ padding: "clamp(10px, 2vw, 14px) clamp(12px, 2vw, 16px)" }}>
+                                    <div style={{ fontSize: "clamp(11px, 1.8vw, 13px)", fontWeight: 600, fontFamily: "'Space Grotesk', sans-serif", marginBottom: "5px" }}>
                                         {project.title}
                                     </div>
                                     <div style={{
@@ -283,7 +311,7 @@ export default function ProofOfWorkPage() {
                                         borderRadius: "4px",
                                         background: `${project.color}12`,
                                     }}>
-                                        📓 Open in Colab →
+                                        📓 Open →
                                     </div>
                                 </div>
                             </motion.a>
@@ -296,7 +324,7 @@ export default function ProofOfWorkPage() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.2 }}
-                    style={{ textAlign: "center", fontSize: "13px", color: "var(--text-muted)", marginTop: "56px", lineHeight: 1.6 }}
+                    style={{ textAlign: "center", fontSize: "clamp(11px, 1.6vw, 13px)", color: "var(--text-muted)", marginTop: "clamp(36px, 6vw, 56px)", lineHeight: 1.6 }}
                 >
                     All projects are live and verifiable • Built by Praveen G Y
                 </motion.p>

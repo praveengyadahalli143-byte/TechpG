@@ -37,7 +37,7 @@ export default function MeetTheTeam() {
         <section
             id="meet-the-team"
             style={{
-                padding: "100px 24px",
+                padding: "clamp(60px, 8vw, 100px) clamp(16px, 4vw, 24px)",
                 position: "relative",
                 zIndex: 1,
             }}
@@ -48,21 +48,18 @@ export default function MeetTheTeam() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    style={{ textAlign: "center", marginBottom: "60px" }}
+                    style={{ textAlign: "center", marginBottom: "clamp(32px, 5vw, 60px)" }}
                 >
                     <h2 className="section-title">Meet the Team</h2>
                     <p className="section-subtitle">
-                        The passionate developers behind <strong style={{ color: "var(--primary-light)" }}>TechpG</strong> — building the future of project registration.
+                        The passionate developers behind{" "}
+                        <strong style={{ color: "var(--primary-light)" }}>TechpG</strong>{" "}
+                        — building the future of project registration.
                     </p>
                 </motion.div>
 
-                <div
-                    style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                        gap: "24px",
-                    }}
-                >
+                {/* Responsive grid: 1-col mobile, 2-col tablet, 3-col desktop */}
+                <div className="responsive-grid-cards">
                     {team.map((member, i) => (
                         <motion.div
                             key={i}
@@ -72,7 +69,7 @@ export default function MeetTheTeam() {
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.12, duration: 0.5 }}
                             style={{
-                                padding: "32px 24px",
+                                padding: "clamp(24px, 3vw, 32px) clamp(18px, 2.5vw, 24px)",
                                 textAlign: "center",
                                 display: "flex",
                                 flexDirection: "column",
@@ -82,20 +79,21 @@ export default function MeetTheTeam() {
                             <motion.div
                                 whileHover={{ scale: 1.1, rotate: 5 }}
                                 style={{
-                                    width: "80px",
-                                    height: "80px",
+                                    width: "clamp(64px, 10vw, 80px)",
+                                    height: "clamp(64px, 10vw, 80px)",
                                     borderRadius: "50%",
                                     background: `linear-gradient(135deg, ${member.color}40, ${member.color})`,
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
-                                    margin: "0 auto 20px",
-                                    fontSize: "24px",
+                                    margin: "0 auto 18px",
+                                    fontSize: "clamp(18px, 3vw, 24px)",
                                     fontWeight: 700,
                                     fontFamily: "'Space Grotesk', sans-serif",
                                     color: "white",
                                     border: `2px solid ${member.color}`,
                                     boxShadow: `0 0 20px ${member.color}40`,
+                                    flexShrink: 0,
                                 }}
                             >
                                 {member.avatar}
@@ -103,7 +101,7 @@ export default function MeetTheTeam() {
 
                             <h4
                                 style={{
-                                    fontSize: "1.2rem",
+                                    fontSize: "clamp(1rem, 2.5vw, 1.2rem)",
                                     fontWeight: 700,
                                     marginBottom: "4px",
                                     fontFamily: "'Space Grotesk', sans-serif",
@@ -114,23 +112,23 @@ export default function MeetTheTeam() {
                             </h4>
                             <div
                                 style={{
-                                    fontSize: "14px",
+                                    fontSize: "clamp(12px, 2vw, 14px)",
                                     color: member.color,
                                     fontWeight: 600,
-                                    marginBottom: "12px",
+                                    marginBottom: "10px",
                                 }}
                             >
                                 {member.role}
                             </div>
                             <div
                                 style={{
-                                    fontSize: "12px",
+                                    fontSize: "11px",
                                     padding: "4px 12px",
                                     borderRadius: "8px",
                                     background: `${member.color}15`,
                                     color: "var(--text-secondary)",
                                     display: "inline-block",
-                                    marginBottom: "16px",
+                                    marginBottom: "14px",
                                     alignSelf: "center"
                                 }}
                             >
@@ -138,10 +136,10 @@ export default function MeetTheTeam() {
                             </div>
                             <p
                                 style={{
-                                    fontSize: "14px",
+                                    fontSize: "clamp(13px, 1.8vw, 14px)",
                                     color: "var(--text-muted)",
                                     lineHeight: 1.6,
-                                    marginBottom: "20px",
+                                    marginBottom: "18px",
                                     flex: 1
                                 }}
                             >
@@ -150,7 +148,7 @@ export default function MeetTheTeam() {
 
                             {/* Contact Details */}
                             <div style={{
-                                paddingTop: "16px",
+                                paddingTop: "14px",
                                 borderTop: "1px solid rgba(255,255,255,0.05)",
                                 display: "flex",
                                 flexDirection: "column",
@@ -159,13 +157,23 @@ export default function MeetTheTeam() {
                                 {member.phone && (
                                     <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}>
                                         <span style={{ fontSize: "14px" }}>📱</span>
-                                        <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.7)" }}>{member.phone}</span>
+                                        <span style={{ fontSize: "clamp(11px, 1.8vw, 13px)", color: "rgba(255,255,255,0.7)" }}>{member.phone}</span>
                                     </div>
                                 )}
                                 {member.email && (
-                                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}>
+                                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", flexWrap: "wrap" }}>
                                         <span style={{ fontSize: "14px" }}>📧</span>
-                                        <a href={`mailto:${member.email}`} style={{ fontSize: "13px", color: member.color, textDecoration: "none" }}>{member.email}</a>
+                                        <a
+                                            href={`mailto:${member.email}`}
+                                            style={{
+                                                fontSize: "clamp(10px, 1.6vw, 13px)",
+                                                color: member.color,
+                                                textDecoration: "none",
+                                                wordBreak: "break-all",
+                                            }}
+                                        >
+                                            {member.email}
+                                        </a>
                                     </div>
                                 )}
                             </div>

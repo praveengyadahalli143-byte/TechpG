@@ -1,0 +1,27 @@
+Vercel CLI 50.22.1
+Retrieving project…
+Deploying praveengyadahalli143-gmailcoms-projects/techpg
+Uploading [--------------------] (0.0B/98B)
+Uploading [====================] (98.0B/98B)
+Inspect: https://vercel.com/praveengyadahalli143-gmailcoms-projects/techpg/BLgkLWPor4YZ4zrK25ukTiVfdbMX [3s]
+Production: https://techpg-u54dr517f-praveengyadahalli143-gmailcoms-projects.vercel.app [3s]
+https://techpg-u54dr517f-praveengyadahalli143-gmailcoms-projects.vercel.appBuilding...
+Building...
+Building: Running build in Washington, D.C., USA (East) – iad1
+Building: Build machine configuration: 2 cores, 8 GB
+Building: Retrieving list of deployment files...
+Building: Downloading 44 deployment files...
+Building: Restored build cache from previous deployment (ENG9yTdrmUZocVy59iVHFog943iz)
+Building: Running "vercel build"
+Building: Vercel CLI 50.22.0
+Building: Installing dependencies...
+Building: up to date in 921ms
+Building: 151 packages are looking for funding
+Building: run `npm fund` for details
+Building: Detected Next.js version: 16.1.6
+Building: Running "npm run build"
+Building: > techpg-app@0.1.0 build
+Building: > next build
+Building: ▲ Next.js 16.1.6 (Turbopack)
+Building: Creating an optimized production build ...
+Error: request to https://api.vercel.com/v13/deployments/dpl_BLgkLWPor4YZ4zrK25ukTiVfdbMX?teamId=team_AIzrjs8JrHNasEwQYjIN5abD failed, reason: read ECONNRESET

@@ -7,12 +7,13 @@ export default function AdminLoginPanel() {
         <section
             id="admin-login"
             style={{
-                padding: "80px 24px 60px",
+                padding: "clamp(48px, 8vw, 80px) clamp(16px, 4vw, 24px) clamp(40px, 6vw, 60px)",
                 position: "relative",
                 zIndex: 1,
             }}
         >
-            <div style={{ maxWidth: "500px", margin: "0 auto" }}>
+            {/* Responsive container: full-width on mobile, narrower on larger screens */}
+            <div className="admin-panel-container">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -20,22 +21,22 @@ export default function AdminLoginPanel() {
                     transition={{ duration: 0.6 }}
                     className="glass-card"
                     style={{
-                        padding: "40px 32px",
+                        padding: "clamp(28px, 5vw, 40px) clamp(20px, 4vw, 32px)",
                         textAlign: "center",
                     }}
                 >
                     {/* Admin icon */}
                     <div
                         style={{
-                            width: "60px",
-                            height: "60px",
+                            width: "clamp(52px, 8vw, 60px)",
+                            height: "clamp(52px, 8vw, 60px)",
                             borderRadius: "16px",
                             background: "rgba(108, 99, 255, 0.15)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            margin: "0 auto 20px",
-                            fontSize: "28px",
+                            margin: "0 auto 18px",
+                            fontSize: "clamp(22px, 4vw, 28px)",
                         }}
                     >
                         🔐
@@ -43,7 +44,7 @@ export default function AdminLoginPanel() {
 
                     <h3
                         style={{
-                            fontSize: "1.5rem",
+                            fontSize: "clamp(1.2rem, 3vw, 1.5rem)",
                             fontWeight: 700,
                             fontFamily: "'Space Grotesk', sans-serif",
                             marginBottom: "8px",
@@ -53,7 +54,7 @@ export default function AdminLoginPanel() {
                     </h3>
                     <p
                         style={{
-                            fontSize: "14px",
+                            fontSize: "clamp(13px, 2vw, 14px)",
                             color: "var(--text-secondary)",
                             marginBottom: "24px",
                             lineHeight: 1.6,
@@ -70,8 +71,8 @@ export default function AdminLoginPanel() {
                             className="glow-btn glow-btn-primary"
                             style={{
                                 width: "100%",
-                                padding: "14px",
-                                fontSize: "15px",
+                                padding: "clamp(12px, 2vw, 14px)",
+                                fontSize: "clamp(14px, 2vw, 15px)",
                             }}
                         >
                             Login to Dashboard →
@@ -87,10 +88,10 @@ export default function AdminLoginPanel() {
                 viewport={{ once: true }}
                 style={{
                     textAlign: "center",
-                    marginTop: "60px",
-                    padding: "30px 0",
+                    marginTop: "clamp(36px, 5vw, 60px)",
+                    padding: "clamp(20px, 3vw, 30px) 0",
                     borderTop: "1px solid var(--border)",
-                    fontSize: "13px",
+                    fontSize: "clamp(11px, 1.5vw, 13px)",
                     color: "var(--text-muted)",
                 }}
             >

@@ -1,0 +1,25 @@
+Vercel CLI 50.22.1
+Fetching deployment "techpg-344plg2bz-praveengyadahalli143-gmailcoms-projects.vercel.app" in praveengyadahalli143-gmailcoms-projects
+> Fetched deployment "techpg-344plg2bz-praveengyadahalli143-gmailcoms-projects.vercel.app" in praveengyadahalli143-gmailcoms-projects [744ms]
+
+  General
+
+    id		dpl_3rcoT1g9D5deUX2akSXVTxSAwuFs
+    name	techpg
+    target	production
+    status	● Error
+    url		https://techpg-344plg2bz-praveengyadahalli143-gmailcoms-projects.vercel.app
+    created	Sat Feb 21 2026 20:49:56 GMT+0530 (India Standard Time) [4m ago]
+
+
+  Aliases
+
+    ╶ https://techpg-praveengyadahalli143-gmailcoms-projects.vercel.app
+    ╶ https://techpg-git-main-praveengyadahalli143-gmailcoms-projects.vercel.app
+    
+
+  Builds
+
+    ╶ .        [0ms]
+    
+
